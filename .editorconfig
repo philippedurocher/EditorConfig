@@ -14,8 +14,7 @@ root = true
 # All Files
 [*]
 charset = utf-8
-indent_style = space
-indent_size = 4
+indent_style = tab
 insert_final_newline = true
 trim_trailing_whitespace = true
 
@@ -85,10 +84,10 @@ indent_style = tab
 [*.{cs,csx,cake,vb,vbx}]
 # "this." and "Me." qualifiers
 # https://docs.microsoft.com/visualstudio/ide/editorconfig-language-conventions#this-and-me
-dotnet_style_qualification_for_field = true:warning
-dotnet_style_qualification_for_property = true:warning
-dotnet_style_qualification_for_method = true:warning
-dotnet_style_qualification_for_event = true:warning
+dotnet_style_qualification_for_field = false:silent
+dotnet_style_qualification_for_property = false:silent
+dotnet_style_qualification_for_method = false:silent
+dotnet_style_qualification_for_event = false:silent
 # Language keywords instead of framework type names for type references
 # https://docs.microsoft.com/visualstudio/ide/editorconfig-language-conventions#language-keywords
 dotnet_style_predefined_type_for_locals_parameters_members = true:warning
@@ -298,6 +297,16 @@ dotnet_naming_symbols.other_public_protected_fields_group.applicable_kinds      
 dotnet_naming_rule.other_public_protected_fields_disallowed_rule.symbols             = other_public_protected_fields_group
 dotnet_naming_rule.other_public_protected_fields_disallowed_rule.style               = disallowed_style
 dotnet_naming_rule.other_public_protected_fields_disallowed_rule.severity            = error
+
+# All private field must begin with underscore
+# https://stackoverflow.com/a/49428349/75172
+dotnet_naming_rule.private_members_with_underscore.symbols  = private_fields
+dotnet_naming_rule.private_members_with_underscore.style    = prefix_underscore
+dotnet_naming_rule.private_members_with_underscore.severity = suggestion
+dotnet_naming_symbols.private_fields.applicable_kinds           = field
+dotnet_naming_symbols.private_fields.applicable_accessibilities = private
+dotnet_naming_style.prefix_underscore.capitalization = camel_case
+dotnet_naming_style.prefix_underscore.required_prefix = _
 
 ##########################################
 # StyleCop Field Naming Rules
